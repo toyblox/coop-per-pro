@@ -1,8 +1,9 @@
 var express = require('express'),
 	cors = require('cors'),
-	bodyParser = require('bodyParser'),
-	mongoose = require('mongoose'),
-	Coop = require('/api/controllers/Coop');
+	bodyParser = require('body-parser'),
+	mongoose = require('mongoose');
+
+var Coop = require('./api/controllers/CoopCtrl');
 
 var port = 8989;
 var mongoUri = 'mongodb://localhost/coop';

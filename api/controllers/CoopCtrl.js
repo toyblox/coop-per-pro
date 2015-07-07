@@ -48,8 +48,6 @@ module.exports = {
 			res.json(response);
 			console.log('coop deleted!');
 		});
+
 	}
-
-
-
-}
+};
