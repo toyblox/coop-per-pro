@@ -35,9 +35,9 @@ module.exports = {
 	},
 
 	updateCoop: function(req, res) {
-		Coop.findbyIdAndUpdate(req.params.coopId, req.body, function(err, response) {
+		Coop.findByIdAndUpdate(req.params.coopId, req.body, function(err, response) {
 			if(err) return res.sendStatus(500);
-			res.json(response);
+			res.send(response);
 			console.log('coop updated');
 		});
 	},
