@@ -1,0 +1,26 @@
+{
+  "name": "coop-per-pro",
+  "version": "1.0.0",
+  "description": "egg share",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toyblox/coop-per-pro.git"
+  },
+  "author": "toyblox",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/toyblox/coop-per-pro/issues"
+  },
+  "homepage": "https://github.com/toyblox/coop-per-pro#readme",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "cors": "^2.7.1",
+    "express": "^4.13.1",
+    "mongoose": "^4.0.6"
+  }
+}
