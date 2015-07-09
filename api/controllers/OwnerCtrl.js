@@ -12,7 +12,9 @@ module.exports = {
 	},
 
 	readOwner: function(req, res) {
-		Owner.findOne({_id: req.params.ownerId}).exec(function(err, response) {
+		Owner.findOne({_id: req.params.ownerId})
+		.populate('coop')
+		.exec(function(err, response) {
 			if(err) return res.sendStatus(500);
 			res.send(response);
 			console.log('got it');
@@ -20,7 +22,9 @@ module.exports = {
 	},
 
 	readOwners: function(req, res) {
-		Owner.find({}).exec(function(err, response) {
+		Owner.find({})
+		.populate('coop')
+		.exec(function(err, response) {
 			if(err) return res.sendStatus(500);
 			res.send(response);
 			console.log('got it all');
@@ -29,7 +33,7 @@ module.exports = {
 
 
 	updateOwner: function(req, res) {
-		Owner.findByIdAndUpdate(req.params.ownerId, req.body, function(err, response){
+		Owner.findByIdAndUpdate(req.params.ownerId, req.body, {new: true}, function(err, response){
 			if(err) return res.sendStatus(500);
 			res.send(response);
 			console.log('owner updated');
@@ -41,6 +45,14 @@ module.exports = {
 			if(err) return res.sendStatus(500);
 			res.send(response);
 			console.log('owner deleted!');
+		});
+	},
+
+	addCoop: function(req, res) {
+		Owner.findByIdAndUpdate(req.params.ownerId, {$push:{coop: req.params.coopId}},  {new: true}, function(err, response) {
+			if(err) return res.sendStatus(500);
+			res.send(response);
+			console.log('coop added to owner');
 		});
 	}
 
