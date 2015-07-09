@@ -5,16 +5,19 @@ var express = require('express'),
 
 var Coop = require('./api/controllers/CoopCtrl');
 var Owner = require('./api/controllers/OwnerCtrl');
+var User = require('./api/controllers/UserCtrl');
 
 var port = 8989;
 var mongoUri = 'mongodb://localhost/coop';
 
 var app = express();
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static(__dirname + '/public'));
 
 
+
+//coop operations
 
 app.post('/api/coops', Coop.createCoop);
 
@@ -26,7 +29,12 @@ app.put('/api/coops/:coopId', Coop.updateCoop);
 
 app.delete('/api/coops/:coopId', Coop.deleteCoop);
 
+app.post('/api/coops/:coopId/owners/:ownerId', Coop.addOwner);
 
+app.post('/api/coops/:coopId/users/:userId', Coop.favoritedBy);
+
+
+// owner operations
 
 app.post('/api/owners', Owner.createOwner);
 
@@ -38,7 +46,22 @@ app.put('/api/owners/:ownerId', Owner.updateOwner);
 
 app.delete('/api/owners/:ownerId', Owner.deleteOwner);
 
+app.post('/api/owners/:ownerId/coops/:coopId', Owner.addCoop);
 
+
+//user operations
+
+app.post('/api/users', User.createUser);
+
+app.get('/api/users', User.readUsers);
+
+app.get('/api/users/:userId', User.readUser);
+
+app.put('/api/users/:userId', User.updateUser);
+
+app.delete('/api/users/:userId', User.deleteUser);
+
+app.post('api/users/:userId/coops/:coopId', User.faveCoops);
 
 
 
