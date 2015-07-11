@@ -32,7 +32,7 @@ body {
 
 .main {
   height: 100%;
-  background-image: url("../images/kaboom.jpg");
+  background-image: url("../app/images/kaboom.jpg");
   background-size: cover;
   color: #fff;
   text-align: center;
