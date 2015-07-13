@@ -11,7 +11,7 @@ var port = 8989;
 var mongoUri = 'mongodb://localhost/coop';
 
 var app = express();
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/'));
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -46,7 +46,6 @@ app.put('/api/owners/:ownerId', Owner.updateOwner);
 
 app.delete('/api/owners/:ownerId', Owner.deleteOwner);
 
-app.post('/api/owners/:ownerId/coops/:coopId', Owner.addCoop);
 
 
 //user operations
