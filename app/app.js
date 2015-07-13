@@ -10,6 +10,10 @@ var app = angular.module('coop', ['ngRoute','uiGmapgoogle-maps']);
 			templateUrl: 'app/templates/map.html',
 			controller: 'mapCtrl'
 		})
+		.when('/owner', {
+			templateUrl: 'app/templates/owner.html',
+			controller: 'ownerCtrl'
+		})
 		.otherwise({
 			redirectTo: '/'
 		});
