@@ -166,22 +166,17 @@ body {
     width: 700px;
   }
 }
-/*
+
 .jumbotron {
-	height: 400px;
-	margin: 0;
-	background-image: url("../images/kaboom.jpg");
-	background-size: cover;
-	opacity: 
+  height: 250px;
+  text-align: center;
+  background-color: #e1f9f8;
 }
 
-.row-one{
-	text-align: center;
+.jumbotron p {
+  font-size: 23px;
 }
 
-.section-two {
-	text-align: center;
-}
-*/
+
 
 
