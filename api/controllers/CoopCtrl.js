@@ -5,7 +5,7 @@ module.exports = {
 	createCoop: function(req, res) {
 		newCoop = new Coop({
 			name: req.body.name,
-			owner: req.body.owner,
+			owner: req.user,
 			address: req.body.address,
 			chickens: req.body.chickens,
 			feed_type: req.body.feed_type,
@@ -21,22 +21,22 @@ module.exports = {
 
 	readCoop: function(req, res) {
 		Coop.findOne({_id: req.params.coopId})
-		.populate('owner')
-		.exec(function(err, response) {
-			if(err) return res.sendStatus(500);
-			res.send(response);
-			console.log('got it');
-		});
+			.populate('owner')
+			.exec(function(err, response) {
+				if(err) return res.sendStatus(500);
+				res.send(response);
+				console.log('got it');
+			});
 	},
 
 	readCoops: function(req, res) {
 		Coop.find({})
-		.populate('owner')
-		.exec(function(err, response) {
-			if(err) return res.sendStatus(500);
-			res.json(response);
-			console.log('got it all');
-		});
+			.populate('owner')
+			.exec(function(err, response) {
+				if(err) return res.sendStatus(500);
+				res.json(response);
+				console.log('got it all');
+			});
 	},
 
 	updateCoop: function(req, res) {
