@@ -9,3 +9,40 @@
 </div>
 </div>
 
+<div class="newCoop">
+	<form ng-submit="addCoop(newCoop)">
+		<div class="form-group">
+	    <label for="coopName">Name</label>
+	    <input type="text" ng-model="newCoop.name" class="form-control" placeholder="name your coop">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="coopAddress">Address of Coop</label>
+	    <input type="text" ng-model="newCoop.address" class="form-control" placeholder="street, city, state zip">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="coopPop">Coop Population</label>
+	    <input type="number" ng-model="newCoop.chickens" class="form-control" placeholder="how many chickens in your coop?">
+	  </div>
+
+	  <div class="form-group">
+	  	<label for="coopFeed">Feed Type</label>
+		    <select multiple class="form-control" ng-model="newCoop.feed_type">
+			  <option value="organic">organic</option>
+			  <option value="conventional">conventional</option>
+			</select>
+	  </div>
+
+	  <div class="form-group">
+	  	<label for="coopProd">Availability</label>
+	  		<select multiple class="form-control" ng-model="newCoop.status">
+	  			<option value="laying">laying</option>
+	  			<option value="not laying">not laying</option>
+	  		</select>
+	  </div>
+
+
+	  <button type="submit" class="btn btn-info">let's share</button>
+	</form>
+</div>

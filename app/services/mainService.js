@@ -1,5 +1,9 @@
 angular.module('coop').service('mainService', function($http, $q){
 
+	// var UserID = $http.get('/api/user').then(function(user){
+	// 	return UserID;
+	// });
+
 	this.getCoops = function() {
 		var dfd = $q.defer();
 		$http({
@@ -17,9 +21,7 @@ angular.module('coop').service('mainService', function($http, $q){
 		$http({
 			method: 'POST',
 			url: '/api/coops',
-			data: newCoop = {
-
-			}
+			data: newCoop
 		}).then(function(data) {
 			dfd.resolve(data);
 		})
@@ -27,5 +29,5 @@ angular.module('coop').service('mainService', function($http, $q){
 		return dfd.promise;
 	};
 
-	
+
 })
