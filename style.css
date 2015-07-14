@@ -13,10 +13,9 @@ a:hover {
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
-  color: #000;
-  text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
-  opacity: 0.7;
+  color: #fff;
+  /*text-shadow: none;*/ /* Prevent inheritence from `body` */
+  background-color: transparent;
   border: 1px solid #fff;
 }
 
@@ -177,7 +176,7 @@ body {
   font-size: 23px;
 }
 
-.newCoop {
+.newCoopForm {
   width: 60%;
   margin: 0 auto;
 }
