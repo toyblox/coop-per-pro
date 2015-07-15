@@ -1,0 +1,97 @@
+<div class="jumbotron">
+  <div class="container">
+  	<div class="row-one">
+  		<div class="col-md-6 col-md-offset-3">
+		   <h2>List Your Coop</h2>
+		   <p>share your extra eggs + connect with your community</p>
+		</div>
+   </div>
+</div>
+</div>
+
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Sign in</h4>
+      </div>
+
+      <div class="modal-body">
+        <form ng-submit="">
+		  <div class="form-group">
+		    <label class="sr-only" for="exampleInputEmail3">Email address</label>
+		    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="email">
+		  </div>
+		  <div class="form-group">
+		    <label class="sr-only" for="exampleInputPassword3">Password</label>
+		    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="password">
+		  </div>
+		  <button type="submit" class="btn btn-info">sign in</button>
+		</form>
+      </div>
+
+      <div class="modal-header">
+      	<h4>Don't have an account? Sign up now!</h4>
+      </div>
+      <div class="modal-body">
+      	<div class="form-group">
+      		<label class="sr-only" for="signup.name">Full Name</label>
+		    <input type="name" class="form-control" id="signup.name" placeholder="name" ng-model="signup.name">
+      	</div>
+      	<div class="form-group">
+		    <label class="sr-only" for="signup.email">Email address</label>
+		    <input type="email" class="form-control" id="signup.email" placeholder="email" ng-model="signup.email">
+		  </div>
+		  <div class="form-group">
+		    <label class="sr-only" for="signup.password">Password</label>
+		    <input type="password" class="form-control" id="signup.password" placeholder="password" ng-model="signup.password">
+		  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning btn-lg btn-block" data-dismiss="modal" ng-click="signup(signup); addCoop(newCoop)">sign up</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+<div class="newCoopForm">
+	<form ng-submit="addCoop(newCoop)">
+		<div class="form-group">
+	    <label for="coopName">Name</label>
+	    <input type="text" ng-model="newCoop.name" class="form-control" placeholder="name your coop">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="coopAddress">Address of Coop</label>
+	    <input type="text" ng-model="newCoop.address" class="form-control" placeholder="street, city, state zip">
+	  </div>
+
+	  <div class="form-group">
+	    <label for="coopPop">Coop Population</label>
+	    <input type="number" ng-model="newCoop.chickens" class="form-control" placeholder="how many chickens in your coop?">
+	  </div>
+
+	  <div class="form-group">
+	  	<label for="coopFeed">Feed Type</label>
+		    <select multiple class="form-control" ng-model="newCoop.feed_type">
+			  <option value="organic">organic</option>
+			  <option value="conventional">conventional</option>
+			</select>
+	  </div>
+
+	  <div class="form-group">
+	  	<label for="coopAvail">Availability</label>
+	  		<select multiple class="form-control" ng-model="newCoop.status">
+	  			<option value="laying">laying</option>
+	  			<option value="not laying">not laying</option>
+	  		</select>
+	  </div>
+
+
+	  <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#myModal">let's share</button>
+	</form>
+</div>
