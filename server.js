@@ -1,7 +1,12 @@
 var express = require('express'),
 	cors = require('cors'),
 	bodyParser = require('body-parser'),
-	mongoose = require('mongoose');
+	mongoose = require('mongoose'),
+	passport = require('passport'),
+	flash = require('connect-flash'),
+	morgan = require('morgan'),
+	cookieParser = require('cookie-parser'),
+	session = require('express-session');
 
 var Coop = require('./api/controllers/CoopCtrl');
 var Owner = require('./api/controllers/OwnerCtrl');
@@ -14,6 +19,13 @@ var app = express();
 app.use(express.static(__dirname + '/'));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(morgan('dev'));
+app.use(cookieParser());
+
+app.use(session({ secret: 'whatthefuckisasecret' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 
 
 
@@ -50,9 +62,14 @@ app.delete('/api/owners/:ownerId', Owner.deleteOwner);
 
 //user operations
 
-app.post('/api/users', User.createUser);
+// app.post('/api/users', User.createUser);
 
-app.get('/api/users', User.readUsers);
+// app.get('/api/users', User.readUsers);
+
+// app.post('/logout', function(){
+// 	req.logout();
+// 	res.redirect('/'); 
+// })
 
 app.get('/api/users/:userId', User.readUser);
 

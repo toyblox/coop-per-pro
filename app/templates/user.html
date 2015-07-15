@@ -1,0 +1,8 @@
+<div ng-show="user.owner">
+Howdy owner! 
+</div>
+
+<div ng-show="!user.owner">Howdy peasant</div>
+
+<button ng-show="user.owner">Edit Owner Profile</button>
+<button ng-show="!user.owner">Edit User Profile</button>
