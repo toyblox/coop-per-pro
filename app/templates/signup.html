@@ -1,1 +1,36 @@
-blah blah!
+<div class="signupForm">
+  <form>
+    <h3>sign in</h3>
+		  <div class="form-group">
+		    <label class="sr-only" for="exampleInputEmail3">Email address</label>
+		    <input type="email" class="form-control" id="exampleInputEmail3" placeholder="email">
+		  </div>
+		  <div class="form-group">
+		    <label class="sr-only" for="exampleInputPassword3">Password</label>
+		    <input type="password" class="form-control" id="exampleInputPassword3" placeholder="password">
+		  </div>
+		  <button type="submit" class="btn btn-info">sign in</button>
+  </form>
+
+
+  <h3>need an account? sign up</h3>
+     
+  <form ng-submit="addUser(newUser)" method="post">
+      	<div class="form-group">
+      		<label class="sr-only" for="signup.name">Full Name</label>
+		      <input type="name" class="form-control" name="name" placeholder="name" ng-model="newUser.name">
+      	</div>
+      	<div class="form-group">
+  		    <label class="sr-only" for="signup.email">Email address</label>
+  		    <input type="email" class="form-control" name="email" placeholder="email" ng-model="newUser.email">
+		  </div>
+		  <div class="form-group">
+		    <label class="sr-only" for="signup.password">Password</label>
+		    <input type="password" class="form-control" name="password" placeholder="password" ng-model="newUser.password">
+		  </div>
+		   
+      <button type="submit" class="btn btn-warning btn-lg btn-block">sign up</button>
+
+  </form>
+</div>
+ 

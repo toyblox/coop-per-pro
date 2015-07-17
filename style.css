@@ -169,9 +169,8 @@ body {
 
 .jumbotron {
   height: 300px;
-  text-align: center;
   /*background-color: #e1f9f8;*/
-  background-image: url("../app/images/eggs.jpg");
+  background: url("../app/images/eggs.jpg")75% 50% no-repeat;
   background-size: cover;
   color: #fff;
   text-shadow: 0 5px 15px rgba(0,0,0,1.5);
@@ -186,8 +185,9 @@ body {
   margin: 0 auto;
 }
 
-.modal {
-  text-align: center;
+.signupForm {
+  width: 50%;
+  margin: auto;
 }
 
 

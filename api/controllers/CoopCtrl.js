@@ -3,15 +3,7 @@ var Coop = require('../models/Coop');
 module.exports = {
 
 	createCoop: function(req, res) {
-		newCoop = new Coop({
-			name: req.body.name,
-			owner: req.user,
-			address: req.body.address,
-			chickens: req.body.chickens,
-			feed_type: req.body.feed_type,
-			status: req.body.status,
-			faveByUsers: req.body.user_favorite
-		});
+		newCoop = new Coop(req.body);
 		newCoop.save(function(err, response) {
 			if(err) return res.sendStatus(500);
 			res.send(response);
