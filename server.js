@@ -15,11 +15,12 @@ var User = require('./api/controllers/UserCtrl');
 var port = 8989;
 var mongoUri = 'mongodb://localhost/coop';
 
+var authThingy = require('./api/config/passport')(passport);
+
 var app = express();
 app.use(express.static(__dirname + '/'));
 app.use(bodyParser.json());
 app.use(cors());
-app.use(morgan('dev'));
 app.use(cookieParser());
 
 app.use(session({ secret: 'whatthefuckisasecret' }));
@@ -27,10 +28,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-
-
 //coop operations
-
 app.post('/api/coops', Coop.createCoop);
 
 app.get('/api/coops', Coop.readCoops);
@@ -44,6 +42,31 @@ app.delete('/api/coops/:coopId', Coop.deleteCoop);
 app.post('/api/coops/:coopId/owners/:ownerId', Coop.addOwner);
 
 app.post('/api/coops/:coopId/users/:userId', Coop.favoritedBy);
+
+
+
+//user operations
+
+app.post('/api/users', User.createUser, function(req, res){
+	console.log('REDIRECT');
+	res.redirect(200, '/map'); 
+});
+
+// app.get('/api/users', User.readUsers);
+
+app.post('/api/users/auth', passport.authenticate('local', {
+	successRedirect: '/map',
+	failureRedirect: '/signup',
+	failureFlash: true
+}));
+
+app.get('/api/users/:userId', User.readUser);
+
+app.put('/api/users/:userId', User.updateUser);
+
+app.delete('/api/users/:userId', User.deleteUser);
+
+app.post('api/users/:userId/coops/:coopId', User.faveCoops);
 
 
 // owner operations
@@ -60,24 +83,7 @@ app.delete('/api/owners/:ownerId', Owner.deleteOwner);
 
 
 
-//user operations
 
-// app.post('/api/users', User.createUser);
-
-// app.get('/api/users', User.readUsers);
-
-// app.post('/logout', function(){
-// 	req.logout();
-// 	res.redirect('/'); 
-// })
-
-app.get('/api/users/:userId', User.readUser);
-
-app.put('/api/users/:userId', User.updateUser);
-
-app.delete('/api/users/:userId', User.deleteUser);
-
-app.post('api/users/:userId/coops/:coopId', User.faveCoops);
 
 
 

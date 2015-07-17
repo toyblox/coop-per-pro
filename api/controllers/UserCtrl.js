@@ -2,13 +2,15 @@ var User = require('../models/User');
 
 module.exports = {
 
-	createUser: function(req, res) {
-		var newUser = new User(req.body);
+	createUser: function(req, res, next) {
+		newUser = new User(req.body);
 		newUser.save(function(err, response) {
 			if(err) return res.sendStatus(500);
-			res.send(response);
-			console.log('new user');
+			// res.send(response);
+			console.log('new user', newUser);
+			next();
 		});
+
 	},
 
 	readUser: function(req, res) {
