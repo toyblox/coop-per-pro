@@ -19,7 +19,7 @@ app.controller('coopCtrl', function($scope, $routeParams, mainService, $location
 				console.log('geocode unsuccessful', status);
 			}
 		});
-		// $location.path('/signup');
+		$location.path('/signup');
 	};
 
 

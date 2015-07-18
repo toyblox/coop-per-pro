@@ -11,6 +11,7 @@ angular.module('coop').service('mainService', function($http, $q){
 			url: '/api/coops'
 		}).then(function(data) {
 			dfd.resolve(data);
+			console.log(data);
 		})
 		return dfd.promise;
 	};
