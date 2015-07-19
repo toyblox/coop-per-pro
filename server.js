@@ -52,7 +52,7 @@ app.post('/api/users', User.createUser, function(req, res){
 	res.redirect(200, '/map'); 
 });
 
-// app.get('/api/users', User.readUsers);
+app.get('/api/users', User.readUsers);
 
 app.post('/api/users/auth', passport.authenticate('local', {
 	successRedirect: '/map',

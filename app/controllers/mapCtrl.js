@@ -2,29 +2,183 @@ var app = angular.module('coop');
 
 app.controller('mapCtrl', function($scope, $routeParams, mainService){
 
-$scope.map = { center: { latitude: 40.75, longitude: -111.88 }, zoom: 11 };
+	var styles = [
+    {
+        "featureType": "landscape.man_made",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#f7f1df"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#d0e3b4"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape.natural.terrain",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.business",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.medical",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#fbd3da"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#bde6ab"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#ffe15f"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry.stroke",
+        "stylers": [
+            {
+                "color": "#efd151"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#ffffff"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "black"
+            }
+        ]
+    },
+    {
+        "featureType": "transit.station.airport",
+        "elementType": "geometry.fill",
+        "stylers": [
+            {
+                "color": "#cfb2db"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#a2daf2"
+            }
+        ]
+    }
+]
+		
+
+$scope.map = { center: { latitude: 40.75, longitude: -111.88 }, zoom: 11, styles: styles};
 
 
 $scope.markers = [];
 
 
 
-	$scope.getLocations = function() {
-		mainService.getCoops().then(function(data) {
-			console.log(data.data);
-			var coopsArray = data.data;
-			for(var i = 0; i < coopsArray.length; i++){
-				$scope.markers.push({
-					id: i,
-					latitude: coopsArray[i].location.lat,
-					longitude: coopsArray[i].location.lng	
-				});
-			};
-			console.log('markers!', $scope.markers);
-		})
-	};
+$scope.getLocations = function() {
+	mainService.getCoops().then(function(data) {
+		console.log(data.data);
+		var coopsArray = data.data;
+		for(var i = 0; i < coopsArray.length; i++){
+			$scope.markers.push({
+				id: i,
+				latitude: coopsArray[i].location.lat,
+				longitude: coopsArray[i].location.lng	
+			});
+		};
+		console.log('markers!', $scope.markers);
+	})
+};
 
 $scope.getLocations();
+
+$scope.showUser;
+
+$scope.showUser = function() {
+	mainService.getUsers().then(function(data) {
+		console.log('user!', data.data);
+		var userData = data.data;
+		$scope.showUser = userData[userData.length - 1];
+		console.log('showuser', $scope.showUser);
+	});
+};
+
+
+
+$scope.showUser();
 
 
 	
