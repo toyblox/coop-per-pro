@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default">
+<div class="mapDash">
+<nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -45,10 +46,35 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<h1>coops near you</h1>
 
-<ui-gmap-google-map center='map.center' zoom='map.zoom' styles='map.styles'>
+<div class="container-fluid">
+<div class="row">
+	<div class="col-md-3">
+		<div class="panel panel-warning" ng-repeat="coop in list">
+		  <div class="panel-heading"><h4>{{ coop.name }}</h4></div>
+		  <div class="panel-body">
+		    {{ coop.address }} <br>
+		    <strong>availability: </strong>
+		    <em>{{ coop.status }}</em>
+		  </div>
+		</div>
+	</div>
+	<div class="col-md-9">
 
-<ui-gmap-markers models="markers" coords="'self'"></ui-gmap-markers>
+		<ui-gmap-google-map center='map.center' zoom='map.zoom' styles='map.styles'>
+			<ui-gmap-markers models="markers" coords="'self'" icon="'icon'" click="onClick()" options="options">
+				<ui-gmap-window options="windowOptions" closeClick="closeClick()">
+						<div>
+						{{ list.name }}
+						{{ list.address }}
+						{{ list.status }}
+						</div>
+					</ui-gmap-window>
+			</ui-gmap-markers>
+		</ui-gmap-google-map>
 
-</ui-gmap-google-map>
+	</div>
+</div>
+</div>
+
+

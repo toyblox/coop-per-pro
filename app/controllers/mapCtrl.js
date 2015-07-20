@@ -139,6 +139,8 @@ app.controller('mapCtrl', function($scope, $routeParams, mainService){
         ]
     }
 ]
+
+
 		
 
 $scope.map = { center: { latitude: 40.75, longitude: -111.88 }, zoom: 11, styles: styles};
@@ -156,7 +158,8 @@ $scope.getLocations = function() {
 			$scope.markers.push({
 				id: i,
 				latitude: coopsArray[i].location.lat,
-				longitude: coopsArray[i].location.lng	
+				longitude: coopsArray[i].location.lng,
+				icon: "../app/images/chicken2.png"
 			});
 		};
 		console.log('markers!', $scope.markers);
@@ -165,20 +168,51 @@ $scope.getLocations = function() {
 
 $scope.getLocations();
 
-$scope.showUser;
-
-$scope.showUser = function() {
+$scope.getUser = function() {
 	mainService.getUsers().then(function(data) {
 		console.log('user!', data.data);
 		var userData = data.data;
 		$scope.showUser = userData[userData.length - 1];
-		console.log('showuser', $scope.showUser);
+		$scope.showUsers = userData;
 	});
+}; 
+
+$scope.getUser();
+
+$scope.list = [];
+
+$scope.listAddress = function() {
+	mainService.getCoops().then(function(data) {
+		var coopData = data.data;
+		for(var i = 0; i < coopData.length; i++) {
+			$scope.list.push({
+				name: coopData[i].name,
+				address: coopData[i].address,
+				status: coopData[i].status
+			});
+		};
+		console.log('listed!', $scope.list);
+	})
 };
 
+$scope.listAddress();
+
+$scope.windowOptions = {
+	show: false
+   };
+
+$scope.onClick = function() {
+	$scope.windowOptions.show = !$scope.windowOptions.show;
+	console.log('clicked!');
+   };
+
+$scope.closeClick = function() {
+	$scope.windowOptions.show = false;
+   };
 
 
-$scope.showUser();
+
+
 
 
 	

@@ -1,6 +1,6 @@
 .angular-google-map-container {
-	height: 500px;
-	width: 650px;
+	height: 740px;
+	width: 1075px;
 }
 
 a,
@@ -27,6 +27,7 @@ a:hover {
 html,
 body {
   height: 100%;
+
 }
 
 .main {
@@ -189,5 +190,22 @@ body {
   width: 50%;
   margin: auto;
 }
+
+.mapDash {
+  padding-top: 70px;
+}
+
+.navbar-default {
+  height: 60px;
+  opacity: .7;
+  font-size: 16px;
+
+}
+
+.panel-warning {
+  border-color: #ffbf00;
+  margin: 1 auto;
+}
+
 
 
