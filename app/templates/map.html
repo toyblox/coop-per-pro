@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/#/">coop</a>
+      <a class="navbar-brand" href="/#/"><!-- <img src="./images/002.png"> -->coop</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,9 +53,13 @@
 		<div class="panel panel-warning" ng-repeat="coop in list">
 		  <div class="panel-heading"><h4>{{ coop.name }}</h4></div>
 		  <div class="panel-body">
-		    {{ coop.address }} <br>
-		    <strong>availability: </strong>
-		    <em>{{ coop.status }}</em>
+		    <h5>{{ coop.address }}</h5>
+		    <em>coop population: </em>
+		    {{ coop.chickens }} chickens <br>
+		    <em>feed type: </em>
+		    {{ coop.feed }} <br>
+		    <em>availability: </em>
+		    {{ coop.status }}
 		  </div>
 		</div>
 	</div>

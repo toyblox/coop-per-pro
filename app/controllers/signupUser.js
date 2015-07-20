@@ -1,6 +1,6 @@
 var app = angular.module('coop');
 
-app.controller('signupCtrl', function($scope, $routeParams, mainService, $location) {
+app.controller('signupUser', function($scope, $routeParams, mainService, $location) {
 	
 
 	$scope.addUser = function(newUser) {

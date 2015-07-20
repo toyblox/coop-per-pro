@@ -22,9 +22,13 @@ var app = angular.module('coop', ['ngRoute','uiGmapgoogle-maps']);
 			templateUrl: 'app/templates/user.html',
 			controller: 'userCtrl'
 		})
-		.when('/signup', {
+		.when('/signup-owner', {
 			templateUrl: 'app/templates/signup.html',
 			controller: 'signupCtrl'
+		})
+		.when('/signup-user', {
+			templateUrl: 'app/templates/signup-user.html',
+			controller: 'signupUser'
 		})
 		.otherwise({
 			redirectTo: '/'

@@ -169,7 +169,7 @@ body {
 }
 
 .jumbotron {
-  height: 300px;
+  height: 280px;
   /*background-color: #e1f9f8;*/
   background: url("../app/images/eggs.jpg")75% 50% no-repeat;
   background-size: cover;
@@ -186,9 +186,24 @@ body {
   margin: 0 auto;
 }
 
+.signup {
+  width: 100%;
+  height: 100%;
+  background: url("../app/images/grass2.jpg");
+  background-size: cover;
+}
+
 .signupForm {
   width: 50%;
-  margin: auto;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.getEggs {
+  text-align: center;
+  padding: 40px;
+  color: #fff;
+  text-shadow: 0 3px 25px rgba(0,0,0,0.5);
 }
 
 .mapDash {

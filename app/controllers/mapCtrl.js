@@ -188,7 +188,9 @@ $scope.listAddress = function() {
 			$scope.list.push({
 				name: coopData[i].name,
 				address: coopData[i].address,
-				status: coopData[i].status
+				status: coopData[i].status,
+				chickens: coopData[i].chickens,
+				feed: coopData[i].feed_type
 			});
 		};
 		console.log('listed!', $scope.list);
